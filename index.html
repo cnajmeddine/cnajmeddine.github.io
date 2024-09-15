@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            font-size: 0.88rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #f4f4f4;
+            padding: 1rem;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .profile {
+            flex: 1;
+            min-width: 200px;
+            background-color: #F9FAFB;
+            padding: 20px;
+            border-radius: 5px;
+            position: sticky; /* Make the profile section sticky */
+    
+        }
+        .profile img {
+            width: 150px;
+            border-radius: 50%;
+        }
+        .projects {
+            flex: 2;
+            min-width: 300px;
+            padding-left: 20px;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+        .project {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            max-height: 150px;
+        }
+
+        .project-text {
+            overflow: hidden;
+            text-overflow: ellipsis; /* Add "..." for overflowing text */
+            white-space: normal;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3; /* Limit to 3 lines in WebKit-based browsers */
+            line-clamp: 3; /* Standard property */
+            max-height: calc(1.2em * 4); /* Fallback for browsers without line-clamp, assuming 1.2em line-height */
+            line-height: 1.2em; /* Line height for consistent spacing */
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap; /* Wraps skills if they overflow */
+            gap: 5px;
+        }
+
+        .project-skills .skill {
+            background-color: #EFF1FF; /* Light blue background */
+            color: #0000FF; /* Blue text */
+            padding: 3px 8px;
+            font-size: 75%; /* Smaller text */
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        .skills {
+            margin-top: 20px;
+        }
+        .skill {
+            display: inline-block;
+            background-color: #EFF1FF; 
+            color: #0000FF; 
+            padding: 3px 12px;
+            margin: 5px;
+            font-size: 90%; 
+            border-radius: 20px; 
+        }
+
+        .experience-education-item {
+            display: flex;
+            flex-direction: column; /* Align items vertically */
+            margin-bottom: 20px; /* Add spacing between items */
+        }
+
+        .experience-education-item h3 {
+            margin-top: 5px; /* Adjust spacing between the date and the title */
+        }
+
+        .experience-education-item ul {
+            margin: 10px 0; /* Add spacing between the list and other content */
+            padding-left: 20px; /* Ensure list items are indented properly */
+        }
+
+        .experience-education-item p.date {
+            font-size: 0.9em;
+            font-style: italic;
+            margin: 0; /* Remove default margin */
+        }
+
+        .date {
+            font-size: 0.9em;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        .icons a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #000;
+        }
+        .icons a i {
+            font-size: 1.5em;
+        }
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="profile">
+                <img src="imgs/profile.png" alt="Profile Picture">
+                <h2>Najm Eddine Charaf</h2>
+                <p>Lead Data Scientist at Geomatic<br>
+                  <i>Based in Casablanca, Morocco</i></p>
+
+                <div class="icons">
+                    <a href="https://www.linkedin.com/in/najm-eddine-charaf/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/cnajmeddine"><i class="fab fa-github"></i></a>
+                    <a href="mailto:oldcharaf@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+
+                <h4>About</h4>
+                <p>Experienced Data Scientist with years of industry expertise, specializing in leveraging data-driven insights to drive business decisions and optimize processes. Skilled in data analysis, machine learning, and advanced programming, with a proven track record of delivering actionable solutions and driving innovation in diverse domains.</p>
+                <div class="skills">
+                    <h4>Skills</h4>
+                    <span class="skill">Artificial Intelligence</span>
+                    <span class="skill">Machine Learning</span>
+                    <span class="skill">Deep Learning</span>
+                    <span class="skill">Computer Vision</span>
+                    <span class="skill">Generative AI</span>
+                    <span class="skill">Data Science</span>
+                    <span class="skill">Data Analytics</span>
+                    <span class="skill">Data Engineering</span>
+                    <span class="skill">AWS</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">SQL</span>
+
+                    <h4>Languages</h4>
+                    <lu>
+                        <li>English (Bilingual)</li>
+                        <li>French (Professional)</li>
+                        <li>Arabic (Bilingual)</li>
+                    </lu>
+                    
+                </div>
+            </div>
+            
+            <div class="projects">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <div class="project">
+                        <h3 style="margin-top: 0; margin-bottom: 5px;">Advanced Geoanalytical System</h3>
+                        <div class="project-skills">
+                            <p class="skill">Python</p>
+                            <p class="skill">AWS</p>
+                            <p class="skill">ArcGIS</p>
+                            <p class="skill">QGIS</p>
+                            <p class="skill">Docker</p>
+                            <p class="skill">Big Data</p>
+                        </div>
+                        <div class="project-text">
+                            Orchestrated spatiotemporal data ingestion from IoT sensors and mobile SDKs, implementing an advanced geospatial analytical workflow.
+                        </div>
+                        <a href="#">Read more →</a>
+                    </div>
+
+                    <div class="project">
+                        <h3 style="margin-top: 0; margin-bottom: 5px;">Automated Parcel Delineation</h3>
+                        <div class="project-skills">
+                            <p class="skill">Python</p>
+                            <p class="skill">PyTorch</p>
+                            <p class="skill">CNNs</p>
+                            <p class="skill">UNet</p>
+                            <p class="skill">ArcGIS</p>
+                        </div>
+                        <div class="project-text">
+                            Utilized computer vision techniques and image segmentation to automate parcel delineation on satellite imagery, enabling more precise cadastral analysis for urban planning and land management.
+                        </div>
+                        <a href="#">Read more →</a>
+                    </div>
+
+                    <div class="project">
+                        <h3 style="margin-top: 0; margin-bottom: 5px;">Radar Data Integration</h3>
+                        <div class="project-skills">
+                            <p class="skill">Python</p>
+                            <p class="skill">Flask</p>
+                            <p class="skill">MySQL</p>
+                            <p class="skill">ETLs</p>
+                            <p class="skill">Power BI</p>
+                        </div>
+                        <div class="project-text">
+                            Developed and deployed ETL processes to seamlessly load data from a radar system into a centralized database. Built an analytical system featuring real-time performance visualization of athletes and generating insightful reports.
+                        </div>
+                        <a href="#">Read more →</a>
+                    </div>
+
+                    <div class="project">
+                        <h3 style="margin-top: 0; margin-bottom: 5px;">AI Voice Companion</h3>
+                        <div class="project-skills">
+                            <p class="skill">Python</p>
+                            <p class="skill">Flask</p>
+                            <p class="skill">HuggingFace</p>
+                            <p class="skill">BART</p>
+                            <p class="skill">DialoGPT</p>
+                            <p class="skill">GCP</p>
+                        </div>
+                        <div class="project-text">
+                            Developed an AI-driven chat companion with voice integration.
+                        </div>
+                        <a href="#">Read more →</a>
+                    </div>
+
+                </div>
+
+                <h2>Experience</h2>
+                <div class="experience-education-item">
+                    <p class="date">2022-Current</p>
+                    <h3 style="margin-bottom: 0;">Lead Data Scientist at Geomatic</h3>
+                    <ul style="margin-top: 0;">
+                        <li>Lead a team of engineers to build a data platform, establish IT infrastructure, implement ETL processes, and enforce data governance. Achieved over 40% business growth as a result.</li>
+                        <li>Integrated ML models and analysis to evaluate branch commercial potential and conduct performance evaluation, culminating in the development of a range of tailored solutions for Attijariwafa Bank.</li>
+                        <li>Spearheaded the design of a scalable data integration solution, employing edge computing and Apache Spark for processing. Subsequently, oversaw its successful implementation with a team of senior engineers.</li>
+                        <li>Developed a decision system with seamless ArcGIS integration, leveraging data warehousing, SSIS ETL processes, and interactive dashboards, to enhance data-driven decision-making within Bank Al-Maghrib.</li>
+                    </ul>
+                </div>
+                <div class="experience-education-item">
+                    <p class="date">2019-2019 (4 months)</p>
+                    <h3 style="margin-bottom: 0;">Data Analyst Internship at Geomatic</h3>
+                    <ul style="margin-top: 0;">
+                        <li>Conducted analysis on various datasets using Excel and SQL queries to identify patterns, trends, and insights for business stakeholders.</li>
+                        <li>Created clear and concise reports and visualizations using Power BI and ArcGIS Dashboards to present data findings in a visually appealing and understandable manner.</li>
+                        <li>Assisted in ensuring data accuracy and integrity by performing data validation, cleansing, and quality checks to maintain consistent datasets for analysis.</li>
+                    </ul>
+                </div>
+
+                <h2>Education</h2>
+                <div class="experience-education-item">
+                    <p class="date">2023-2025</p>
+                    <h3>Master of Science in Artificial Intelligence at IU International University of Applied Sciences</h3>
+                    <p class="date">2024-2024</p>
+                    <h3>Computer Vision Engineer at Information Technology Institute</h3>
+                    <p class="date">2023-2024</p>
+                    <h3>Advanced Data Science at ExploreAI Academy</h3>
+                    <p class="date">2018-2022</p>
+                    <h3>Bachelor's degree in Mathematics and Computer Science at University Hassan II of Casablanca</h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
