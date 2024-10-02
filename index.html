@@ -12,45 +12,239 @@
             line-height: 1.5;
             margin: 0;
             padding: 0;
-            color: #333;
-            font-size: 0.88rem;
+            background-color: #0E0E0E;
+            color: #D2D2D2;
+            font-size: 0.92rem;
+            scrollbar-width: thin; /* Thin scrollbar width */
+            scrollbar-color: #4CAF50 #191919; /* Thumb and track colors */
+        }
+
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+        width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+        background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+        background-color: #383b3c;
+        border-radius: 20px;
+        border: 6px solid transparent;
+        background-clip: content-box;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+        background-color: #a8bbbf;
         }
         
         .container {
-            width: 90%;
+            display: flex;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            margin-top: 25px;
         }
-        header {
-            background-color: #f4f4f4;
-            padding: 1rem;
-        }
-        
+
         .main-content {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 20px;
+            flex: 3;
+            padding-left: 20px;
+            position: relative;
+            background-color: #262525;
+            border-top-right-radius: 15px; /* Only top-right corner */
+            border-bottom-right-radius: 15px; /* Only bottom-right corner */
+            border: 1px solid #333333;
         }
-        
+
         .profile {
             flex: 1;
             min-width: 200px;
-            background-color: #F9FAFB;
+            background-color: #191919;
             padding: 20px;
-            border-radius: 5px;
-            position: sticky; /* Make the profile section sticky */
-    
+            border-top-left-radius: 15px; /* Only top-left corner */
+            border-bottom-left-radius: 15px; /* Only bottom-left corner */
+            border: 1px solid #333333;
         }
+        
         .profile img {
             width: 150px;
-            border-radius: 50%;
+            border-radius: 30px;
+            display: block;
+            margin: 0 auto; /* Center the image */
         }
-        .projects {
-            flex: 2;
-            min-width: 300px;
+        
+        .profile .icons a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #D2D2D2;
+        }
+        
+        .profile .icons a i {
+            font-size: 1.5em;
+        }
+
+        .skill {
+            background-color: #262626;
+            color: #ffffff;
+            padding: 3px 8px;
+            font-size: 75%;
+            border-radius: 10px;
+            margin: 5px 2px; /* Increased spacing */
+            display: inline-block; /* Ensure they wrap properly */
+        }
+
+        /* Top-right buttons */
+        .tab-buttons {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        
+        .about-btn {
+            border-bottom-left-radius: 15px;
+        }
+        .project-btn {
+            border-top-right-radius: 15px;
+        }
+
+        .tab-buttons button {
+            background-color: #262626;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            
+        }
+
+        .tab-buttons button.active {
+            background-color: #4CAF50;
+        }
+
+        /* Content sections */
+        .section-content {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        /* Target h2 inside both #about and #resume */
+        #about h2, #resume h2 {
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        /* Target the ::after pseudo-element for h2 in both #about and #resume */
+        #about h2::after, #resume h2::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: rgb(68, 68, 68); /* Adjust the color if needed */
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Certifications Grid Layout */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* For rows that have fewer than 3 images */
+        .certifications-grid img:nth-child(4),
+        .certifications-grid img:nth-child(5) {
+            grid-column: span 2; /* Make the last 2 images in one row span 2 columns */
+        }
+
+        .certifications-grid img {
+            width: 100%; /* Make sure the images fit their grid cells */
+            border-radius: 10px;
+        }
+
+        /* Experience and Education styles */
+        .experience-education-item {
+            margin-bottom: 20px;
+        }
+        .experience-education-item h3 {
+            margin-top: 5px;
+        }
+        .experience-education-item ul {
             padding-left: 20px;
         }
+
+        .certifications-grid {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping to the next line */
+            justify-content: flex-start; /* Space between the items */
+            margin-top: 50px;
+        }
+
+        .certifications-grid img {
+            width: 150px; /* Set the width you want */
+            height: 150px; /* Set the height you want */
+            object-fit: cover; /* Ensures the images maintain aspect ratio and fill the space */
+            border-radius: 10px;
+            margin-bottom: 10px; /* Adjusts space between rows */
+            margin-left: 30px;
+        }
+
+        .date {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            color: #4CAF50;
+        }
+
+        .experience-education-item {
+            position: relative;
+            padding-left: 40px; /* To make room for the timeline */
+            margin-bottom: 30px; /* Spacing between each item */
+        }
+
+        /* Timeline vertical line */
+        .experience-education-item::before {
+            content: "";
+            position: absolute;
+            left: 20px; /* Align with the icons */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #4CAF50; /* Color of the timeline */
+        }
+
+        /* Add a circle for the icon marker */
+        .experience-education-item h3::before {
+            content: "";
+            position: absolute;
+            left: 15px; /* Adjust position to be on the line */
+            top: calc(%-5px); /* Center the circle vertically along the line */
+            width: 10px;
+            height: 10px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+        }
+
+        /* Add specific spacing for icons next to h3 (if you have icons) */
+        h3 i {
+            margin-right: 5px; /* Spacing between icon and text */
+            color: #4CAF50;
+            vertical-align: middle;
+        }
+
+        /* Optional styling for icons in h2 (larger) */
+        h2 i {
+            margin-right: 10px;
+            color: #4CAF50;
+            vertical-align: middle;
+        }
+
+        /* Projects section */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -84,126 +278,138 @@
         }
 
         .project-skills .skill {
-            background-color: #EFF1FF; /* Light blue background */
-            color: #0000FF; /* Blue text */
+            background-color: #3e3c3c; /* Light blue background */
+            color: #ffffff; /* Blue text */
             padding: 3px 8px;
             font-size: 75%; /* Smaller text */
             border-radius: 10px;
-            margin: 2px;
+            margin-right: 1px;
         }
 
-        .skills {
-            margin-top: 20px;
-        }
-        .skill {
-            display: inline-block;
-            background-color: #EFF1FF; 
-            color: #0000FF; 
-            padding: 3px 12px;
-            margin: 5px;
-            font-size: 90%; 
-            border-radius: 20px; 
-        }
-
-        .experience-education-item {
-            display: flex;
-            flex-direction: column; /* Align items vertically */
-            margin-bottom: 20px; /* Add spacing between items */
-        }
-
-        .experience-education-item h3 {
-            margin-top: 5px; /* Adjust spacing between the date and the title */
-        }
-
-        .experience-education-item ul {
-            margin: 10px 0; /* Add spacing between the list and other content */
-            padding-left: 20px; /* Ensure list items are indented properly */
-        }
-
-        .experience-education-item p.date {
-            font-size: 0.9em;
-            font-style: italic;
-            margin: 0; /* Remove default margin */
-        }
-
-        .date {
-            font-size: 0.9em;
-            font-style: italic;
-            margin-bottom: 5px;
-        }
-        .icons a {
-            margin-right: 10px;
-            text-decoration: none;
-            color: #000;
-        }
-        .icons a i {
-            font-size: 1.5em;
-        }
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .main-content {
+            .container {
                 flex-direction: column;
             }
-            .project-grid {
-                grid-template-columns: 1fr;
+            .certifications-grid {
+                grid-template-columns: 1fr; /* Stack all images in one column on small screens */
             }
         }
     </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <div class="container">
+        <!-- Left Profile Section -->
+        <div class="profile">
+            <img src="imgs/profile.png" alt="Profile Picture">
+            <h2>Najm Eddine Charaf</h2>
+            <p>Lead Data Scientist at Geomatic<br>
+              <i>Based in Casablanca, Morocco</i></p>
+
+            <div class="icons">
+                <a href="https://www.linkedin.com/in/najm-eddine-charaf/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/cnajmeddine"><i class="fab fa-github"></i></a>
+                <a href="mailto:oldcharaf@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <h4>Skills</h4>
+            <div class="skills">
+                <span class="skill">Artificial Intelligence</span>
+                <span class="skill">Computer Vision</span>
+                <span class="skill">Data Science</span>
+                <span class="skill">Big Data</span>
+                <span class="skill">Cloud Computing</span>
+                <span class="skill">Business Intelligence</span>
+                <span class="skill">DevOps</span>
+                <span class="skill">MLOps</span>
+                <span class="skill">Project Management</span>
+                <span class="skill">Leadership</span>
+                
+                <!-- Add more skills as needed -->
+            </div>
+        </div>
+
+        <!-- Right Content Section -->
         <div class="main-content">
-            <div class="profile">
-                <img src="imgs/profile.png" alt="Profile Picture">
-                <h2>Najm Eddine Charaf</h2>
-                <p>Lead Data Scientist at Geomatic<br>
-                  <i>Based in Casablanca, Morocco</i></p>
+            <div class="tab-buttons">
+                <button class="active about-btn" onclick="showSection('about')">About</button>
+                <button class="resume-btn" onclick="showSection('resume')">Resume</button>
+                <button class="project-btn" onclick="showSection('projects')">Projects</button>
+            </div>
 
-                <div class="icons">
-                    <a href="https://www.linkedin.com/in/najm-eddine-charaf/"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/cnajmeddine"><i class="fab fa-github"></i></a>
-                    <a href="mailto:oldcharaf@gmail.com"><i class="fas fa-envelope"></i></a>
-                </div>
+            <!-- About Section -->
+            <div id="about" class="section-content active">
+                <h2>About Me</h2>
+                <p style="margin-right: 20px;">Experienced Data Scientist with years of industry expertise, specializing in leveraging data-driven insights to drive business decisions and optimize processes. Skilled in data analysis, machine learning, and advanced programming, with a proven track record of delivering actionable solutions and driving innovation in diverse domains.</p>
 
-                <h4>About</h4>
-                <p>Experienced Data Scientist with years of industry expertise, specializing in leveraging data-driven insights to drive business decisions and optimize processes. Skilled in data analysis, machine learning, and advanced programming, with a proven track record of delivering actionable solutions and driving innovation in diverse domains.</p>
-                <div class="skills">
-                    <h4>Skills</h4>
-                    <span class="skill">Artificial Intelligence</span>
-                    <span class="skill">Machine Learning</span>
-                    <span class="skill">Deep Learning</span>
-                    <span class="skill">Computer Vision</span>
-                    <span class="skill">Generative AI</span>
-                    <span class="skill">Data Science</span>
-                    <span class="skill">Data Analytics</span>
-                    <span class="skill">Data Engineering</span>
-                    <span class="skill">AWS</span>
-                    <span class="skill">Python</span>
-                    <span class="skill">SQL</span>
-
-                    <h4>Certifications</h4>
-                    <lu>
-                        <li>Google Project Management Certificate</li>
-                        <li>Google Data Analytics Certificate</li>
-                        <li>IBM Data Science Certificate</li>
-                        <li>DevOps, DataOps, MLOps - Duke University</li>
-                        <li>Advanced Algorithms and Complexity - UC San Diego</li>
-                    </lu>
-
-                    <h4>Languages</h4>
-                    <lu>
-                        <li>English (Bilingual)</li>
-                        <li>French (Professional)</li>
-                        <li>Arabic (Bilingual)</li>
-                    </lu>
-                    
+                <!-- Certifications Grid Section -->
+                <h2>Certifications</h2>
+                <div class="certifications-grid">
+                    <img src="/imgs/GPM.png" alt="Google Project Management">
+                    <img src="/imgs/GDA.png" alt="Google Data Analytics">
+                    <img src="/imgs/IBMDS.png" alt="IBM Data Science">
+                    <img src="/imgs/HRPy.png" alt="HackerRank Python 5 Stars">
                 </div>
             </div>
-            
-            <div class="projects">
-                <h2>Projects</h2>
-                <div class="project-grid">
+
+            <!-- Resume Section -->
+            <div id="resume" class="section-content">
+                <h2>
+                    <i class="fas fa-briefcase"></i> Experience
+                </h2>
+                <div class="experience-education-item">
+                    <p class="date">2022-Present</p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-building"></i> Lead Data Scientist at Geomatic
+                    </h3>
+                    <span>☀ Led a team of engineers in building full-stack data solutions, integrating advanced analytics, implementing scalable infrastructure, and driving business growth through data-driven insights and decision systems.</span>
+                    <ul>
+                    </ul>
+
+                    <p class="date">2019-2019 <i>(4 months)</i></p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-chart-line"></i> Data Analyst at Geomatic
+                    </h3>
+                    <span>☀ Conducted data analysis, created reports and visualizations using Power BI and ArcGIS Dashboards, and ensured data accuracy through validation and cleansing.</span>
+                    <ul>
+                    </ul>
+                    
+                </div>
+
+                <h2>
+                    <i class="fas fa-graduation-cap"></i> Education
+                </h2>
+                <div class="experience-education-item">
+                    <p class="date">2023-2025</p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-university"></i> Master of Science in Artificial Intelligence
+                    </h3>
+                    <span>IU International University of Applied Sciences, <i>Germany</i></span>
+
+                    <p class="date">2024-2024</p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-brain"></i> Computer Vision Engineer
+                    </h3>
+                    <span>Information Technology Institute, <i>Egypt</i></span>
+
+                    <p class="date">2023-2025</p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-database"></i> Advanced Data Science Programme
+                    </h3>
+                    <span>ExploreAI Academy, <i>Morocco</i></span>
+
+                    <p class="date">2023-2025</p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-calculator"></i> Bachelor's degree in Mathematics and Computer Science
+                    </h3>
+                    <span>University of Hassan 2 Casablanca, <i>Morocco</i></span>
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+             <div id="projects" class="section-content">
+                <div class="project-grid"></div>
                     <div class="project">
                         <h3 style="margin-top: 0; margin-bottom: 5px;">Advanced Geoanalytical System</h3>
                         <div class="project-skills">
@@ -217,7 +423,7 @@
                         <div class="project-text">
                             Orchestrated spatiotemporal data ingestion from IoT sensors and mobile SDKs, implementing an advanced geospatial analytical workflow.
                         </div>
-                        <a href="#">Read more →</a>
+                        <a href="#" style="color: #4CAF50;">Read more →</a>
                     </div>
 
                     <div class="project">
@@ -232,7 +438,7 @@
                         <div class="project-text">
                             Utilized computer vision techniques and image segmentation to automate parcel delineation on satellite imagery, enabling more precise cadastral analysis for urban planning and land management.
                         </div>
-                        <a href="#">Read more →</a>
+                        <a href="#" style="color: #4CAF50;">Read more →</a>
                     </div>
 
                     <div class="project">
@@ -247,7 +453,7 @@
                         <div class="project-text">
                             Developed and deployed ETL processes to seamlessly load data from a radar system into a centralized database. Built an analytical system featuring real-time performance visualization of athletes and generating insightful reports.
                         </div>
-                        <a href="#">Read more →</a>
+                        <a href="#" style="color: #4CAF50;">Read more →</a>
                     </div>
 
                     <div class="project">
@@ -263,46 +469,30 @@
                         <div class="project-text">
                             Developed an AI-driven chat companion with voice integration.
                         </div>
-                        <a href="#">Read more →</a>
+                        <a href="#" style="color: #4CAF50;">Read more →</a>
                     </div>
 
                 </div>
+             </div>
 
-                <h2>Experience</h2>
-                <div class="experience-education-item">
-                    <p class="date">2022-Current</p>
-                    <h3 style="margin-bottom: 0;">Lead Data Scientist at Geomatic</h3>
-                    <ul style="margin-top: 0;">
-                        <li>Lead a team of engineers to build a data platform, establish IT infrastructure, implement ETL processes, and enforce data governance. Achieved over 40% business growth as a result.</li>
-                        <li>Integrated ML models and analysis to evaluate branch commercial potential and conduct performance evaluation, culminating in the development of a range of tailored solutions for Attijariwafa Bank.</li>
-                        <li>Spearheaded the design of a scalable data integration solution, employing edge computing and Apache Spark for processing. Subsequently, oversaw its successful implementation with a team of senior engineers.</li>
-                        <li>Developed a decision system with seamless ArcGIS integration, leveraging data warehousing, SSIS ETL processes, and interactive dashboards, to enhance data-driven decision-making within Bank Al-Maghrib.</li>
-                    </ul>
-                </div>
-                <div class="experience-education-item">
-                    <p class="date">2019-2019 (4 months)</p>
-                    <h3 style="margin-bottom: 0;">Data Analyst Internship at Geomatic</h3>
-                    <ul style="margin-top: 0;">
-                        <li>Conducted analysis on various datasets using Excel and SQL queries to identify patterns, trends, and insights for business stakeholders.</li>
-                        <li>Created clear and concise reports and visualizations using Power BI and ArcGIS Dashboards to present data findings in a visually appealing and understandable manner.</li>
-                        <li>Assisted in ensuring data accuracy and integrity by performing data validation, cleansing, and quality checks to maintain consistent datasets for analysis.</li>
-                    </ul>
-                </div>
-
-                <h2>Education</h2>
-                <div class="experience-education-item">
-                    <p class="date">2023-2025</p>
-                    <h3>Master of Science in Artificial Intelligence at IU International University of Applied Sciences</h3>
-                    <p class="date">2024-2024</p>
-                    <h3>Computer Vision Engineer at Information Technology Institute</h3>
-                    <p class="date">2023-2024</p>
-                    <h3>Advanced Data Science at ExploreAI Academy</h3>
-                    <p class="date">2018-2022</p>
-                    <h3>Bachelor's degree in Mathematics and Computer Science at University Hassan II of Casablanca</h3>
-                </div>
-
-            </div>
         </div>
     </div>
+
+    <script>
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(function(content) {
+                content.classList.remove('active');
+            });
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-buttons button').forEach(function(button) {
+                button.classList.remove('active');
+            });
+            // Show the selected section and add active class to the button
+            document.getElementById(section).classList.add('active');
+            document.querySelector(`button[onclick="showSection('${section}')"]`).classList.add('active');
+        }
+    </script>
+
 </body>
 </html>
