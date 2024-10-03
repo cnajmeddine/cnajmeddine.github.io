@@ -65,6 +65,10 @@
             border-top-left-radius: 15px; /* Only top-left corner */
             border-bottom-left-radius: 15px; /* Only bottom-left corner */
             border: 1px solid #333333;
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
         }
         
         .profile img {
@@ -91,6 +95,17 @@
             font-size: 75%;
             border-radius: 10px;
             margin: 5px 2px; /* Increased spacing */
+            display: inline-block; /* Ensure they wrap properly */
+        }
+
+        .position-title {
+            background-color: #262626;
+            color: #ffffff;
+            padding: 3px 8px;
+            font-size: 100%;
+            border-radius: 10px;
+            font-weight: 500;
+            margin-bottom: 7px;
             display: inline-block; /* Ensure they wrap properly */
         }
 
@@ -286,6 +301,10 @@
             margin-right: 1px;
         }
 
+        .certificate:hover {
+            cursor: pointer;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -303,8 +322,8 @@
         <!-- Left Profile Section -->
         <div class="profile">
             <img src="imgs/profile.png" alt="Profile Picture">
-            <h2>Najm Eddine Charaf</h2>
-            <p>Lead Data Scientist at Geomatic<br>
+            <h2 style="margin-bottom: 7px;">Najm Eddine Charaf</h2>
+            <p style="margin-top: 0;"><span class="position-title">Lead Data Scientist</span><br>
               <i>Based in Casablanca, Morocco</i></p>
 
             <div class="icons">
@@ -319,10 +338,10 @@
                 <span class="skill">Computer Vision</span>
                 <span class="skill">Data Science</span>
                 <span class="skill">Big Data</span>
+                <span class="skill">MLOps</span>
                 <span class="skill">Cloud Computing</span>
                 <span class="skill">Business Intelligence</span>
                 <span class="skill">DevOps</span>
-                <span class="skill">MLOps</span>
                 <span class="skill">Project Management</span>
                 <span class="skill">Leadership</span>
                 
@@ -346,10 +365,10 @@
                 <!-- Certifications Grid Section -->
                 <h2>Certifications</h2>
                 <div class="certifications-grid">
-                    <img src="/imgs/GPM.png" alt="Google Project Management">
-                    <img src="/imgs/GDA.png" alt="Google Data Analytics">
-                    <img src="/imgs/IBMDS.png" alt="IBM Data Science">
-                    <img src="/imgs/HRPy.png" alt="HackerRank Python 5 Stars">
+                    <a target="_blank" href="https://www.coursera.org/account/accomplishments/specialization/AXUXTVYT17GS"><img class="certificate" src="/imgs/GPM.png" alt="Google Project Management" href=""></a>
+                    <a target="_blank" href="https://www.coursera.org/account/accomplishments/specialization/certificate/YPH3X5T9DC6G"><img class="certificate" src="/imgs/GDA.png" alt="Google Data Analytics" href=""></a>
+                    <a target="_blank" href="https://www.credly.com/badges/0de796c4-2c23-480c-a594-fc68f4bbc6cb/linked_in_profile"><img class="certificate" src="/imgs/IBMDS.png" alt="IBM Data Science"></a>
+                    <a target="_blank" href="https://www.hackerrank.com/profile/cnajmeddine"><img class="certificate" src="/imgs/HRPy.png" alt="HackerRank Python 5 Stars" href=""></a>
                 </div>
             </div>
 
