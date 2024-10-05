@@ -309,9 +309,29 @@
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
+                font-size: 0.9em;
             }
             .certifications-grid {
                 grid-template-columns: 1fr; /* Stack all images in one column on small screens */
+            }
+            .profile {
+                border-top-left-radius: 15px; /* Top-left corner */
+                border-top-right-radius: 15px; /* Top-right corner */
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            .main-content {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 15px; /* Bottom-left corner */
+                border-bottom-right-radius: 15px; /* Bottom-right corner */
+            }
+            .project-btn {
+                border-top-right-radius: 0;
+            }
+            .certifications-grid img {
+                width: 100px; /* Resize to 50px for mobile view */
+                height: 100px; /* Resize to 50px for mobile view */
             }
         }
     </style>
