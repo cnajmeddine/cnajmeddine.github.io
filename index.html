@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Najm Eddine Charaf Personal Portfolio</title>
+    <title>Data Science Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
@@ -66,9 +66,9 @@
             border-bottom-left-radius: 15px; /* Only bottom-left corner */
             border: 1px solid #333333;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
         }
         
         .profile img {
@@ -305,33 +305,136 @@
             cursor: pointer;
         }
 
+        .contact {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            max-height: 150px;
+        }
+
+        /* Container and Title */
+        .contact-form {
+        max-width: 600px;
+        margin-bottom: 10px;
+        padding-right: 15px;
+        }
+
+        /* Input Wrapper */
+        .input-wrapper {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        }
+
+        .input-wrapper .form-input {
+        flex: 1;
+        }
+
+        textarea.form-input {
+        min-height: 100px;
+        resize: vertical;
+        margin-bottom: 5px;
+        }
+
+        /* Input and Textarea Styles */
+        .form-input {
+            background-color: #333333;
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #364236;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #ffffff;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        /* Button Styles */
+        .form-btn {
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 15rem;
+        }
+        
+        /* Mapbox */
+        .mapbox iframe {
+            border: none;
+            filter: grayscale(1) invert(1);
+        }
+
+        /* Services */
+        .service-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2-column grid */
+        gap: 20px 25px; /* Vertical and horizontal spacing */
+        padding-left: 0;
+        padding-right: 10px;
+        }
+
+        .service-item {
+        position: relative;
+        display: flex;
+        align-items: center; /* Center-align icon and text vertically */
+        background: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
+        padding: 20px;
+        border-radius: 14px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        }
+
+        .service-item::before {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        background: linear-gradient(
+            to bottom right,
+            hsla(240, 1%, 18%, 0.251) 0%,
+            hsla(240, 2%, 11%, 0) 100%
+        ), hsl(240, 2%, 13%);
+        border-radius: inherit;
+        z-index: -1;
+        }
+
+        .service-icon-box {
+        margin-right: 15px;
+        font-size: 40px; /* Adjust icon size */
+        color: hsl(45, 100%, 72%); /* Icon color */
+        }
+
+        .service-content-box {
+        text-align: left;
+        }
+
+        .service-item-title {
+        margin-bottom: 7px;
+        font-size: 18px;
+        font-weight: bold;
+        }
+
+        .service-item-text {
+        color: hsl(0, 0%, 84%);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+        }
+
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
-                font-size: 0.9em;
             }
             .certifications-grid {
                 grid-template-columns: 1fr; /* Stack all images in one column on small screens */
-            }
-            .profile {
-                border-top-left-radius: 15px; /* Top-left corner */
-                border-top-right-radius: 15px; /* Top-right corner */
-                border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;
-            }
-            .main-content {
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
-                border-bottom-left-radius: 15px; /* Bottom-left corner */
-                border-bottom-right-radius: 15px; /* Bottom-right corner */
-            }
-            .project-btn {
-                border-top-right-radius: 0;
-            }
-            .certifications-grid img {
-                width: 100px; /* Resize to 50px for mobile view */
-                height: 100px; /* Resize to 50px for mobile view */
             }
         }
     </style>
@@ -343,7 +446,7 @@
         <div class="profile">
             <img src="imgs/profile.png" alt="Profile Picture">
             <h2 style="margin-bottom: 7px;">Najm Eddine Charaf</h2>
-            <p style="margin-top: 0;"><span class="position-title">Lead Data Scientist</span><br>
+            <p style="margin-top: 0;"><span class="position-title">Data Scientist</span><br>
               <i>Based in Casablanca, Morocco</i></p>
 
             <div class="icons">
@@ -374,13 +477,66 @@
             <div class="tab-buttons">
                 <button class="active about-btn" onclick="showSection('about')">About</button>
                 <button class="resume-btn" onclick="showSection('resume')">Resume</button>
-                <button class="project-btn" onclick="showSection('projects')">Projects</button>
+                <button class="resume-btn" onclick="showSection('projects')">Projects</button>
+                <button class="project-btn" onclick="showSection('contact')">Contact</button>
             </div>
 
             <!-- About Section -->
             <div id="about" class="section-content active">
-                <h2>About Me</h2>
+                <h1>About Me</h1>
                 <p style="margin-right: 20px;">Experienced Data Scientist with years of industry expertise, specializing in leveraging data-driven insights to drive business decisions and optimize processes. Skilled in data analysis, machine learning, and advanced programming, with a proven track record of delivering actionable solutions and driving innovation in diverse domains.</p>
+
+                <!-- Areas of expertise -->
+                <h2>What I'm Doing</h2>
+                <div class="service">
+                    <ul class="service-list">
+                      <li class="service-item">
+                        <div class="service-icon-box">
+                          <i class="fas fa-robot"></i> <!-- ML & AI Development icon -->
+                        </div>
+                        <div class="service-content-box">
+                          <h4 class="h4 service-item-title">ML & AI Development</h4>
+                          <p class="service-item-text">
+                            Advanced ML models crafted to solve complex business challenges.
+                          </p>
+                        </div>
+                      </li>
+                      <li class="service-item">
+                        <div class="service-icon-box">
+                          <i class="fas fa-database"></i> <!-- Big Data Engineering icon -->
+                        </div>
+                        <div class="service-content-box">
+                          <h4 class="h4 service-item-title">Big Data Engineering</h4>
+                          <p class="service-item-text">
+                            Scalable data architectures and pipelines to harness insights.
+                          </p>
+                        </div>
+                      </li>
+                      <li class="service-item">
+                        <div class="service-icon-box">
+                          <i class="fas fa-chart-line"></i> <!-- Data Science & Business Intelligence icon -->
+                        </div>
+                        <div class="service-content-box">
+                          <h4 class="h4 service-item-title">Data Science & Business Intelligence</h4>
+                          <p class="service-item-text">
+                            Comprehensive analytics to drive impactful decisions-making.
+                          </p>
+                        </div>
+                      </li>
+                      <li class="service-item">
+                        <div class="service-icon-box">
+                          <i class="fas fa-project-diagram"></i> <!-- Project Management & Leadership icon -->
+                        </div>
+                        <div class="service-content-box">
+                          <h4 class="h4 service-item-title">Project Management & Leadership</h4>
+                          <p class="service-item-text">
+                            Project leadership and cross-functional team management.
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  
 
                 <!-- Certifications Grid Section -->
                 <h2>Certifications</h2>
@@ -406,7 +562,7 @@
                     <ul>
                     </ul>
 
-                    <p class="date">2019-2019 <i>(6 months)</i></p>
+                    <p class="date">2019-2019 <i>(4 months)</i></p>
                     <h3 style="margin: 0;">
                         <i class="fas fa-chart-line"></i> Data Analyst at Geomatic
                     </h3>
@@ -512,7 +668,46 @@
                     </div>
 
                 </div>
+                
+            <!-- Contact section-->
+            <div id="contact" class="section-content">
+                <div class="contact-div"></div>
+                <section class="mapbox" data-mapbox>
+                    <figure>
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d330422.615574058!2d-7.655320509668467!3d33.58988602617352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7671c4f8ff93b%3A0x71d3e878e7e1f1c8!2sCasablanca%2C%20Morocco!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+                        width="97%" height="200" loading="lazy"></iframe>
+                    </figure>
+                  </section>
+
+                  <section class="contact-form">
+
+                    <h3 class="h3 form-title">Contact Form</h3>
+          
+                    <form action="mailto:oldcharaf@gmail.com" class="form">
+          
+                      <div class="input-wrapper">
+                        <input type="text" name="fullname" class="form-input" placeholder="Full name" required>
+          
+                        <input type="email" name="email" class="form-input" placeholder="Email address" required>
+                      </div>
+          
+                      <textarea name="message" class="form-input" placeholder="Your Message" required></textarea>
+          
+                      <button class="form-btn" type="submit">
+                        <ion-icon name="paper-plane"></ion-icon>
+                        <span>Send Message</span>
+                      </button>
+          
+                    </form>
+          
+                  </section>
+                </div>
              </div>
+
+            </div>
+
+             
 
         </div>
     </div>
@@ -531,6 +726,23 @@
             document.getElementById(section).classList.add('active');
             document.querySelector(`button[onclick="showSection('${section}')"]`).classList.add('active');
         }
+
+        const inputs = document.querySelectorAll('.form-input');
+
+        // Add an event listener to each input
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+            // If there's text in the input, change background to black
+            if (input.value.trim() !== "") {
+                input.style.backgroundColor = '#333333';
+                input.style.color = 'white'; // Adjust text color for readability
+            } else {
+                // Revert to original background color if empty
+                input.style.backgroundColor = '#333333';
+                input.style.color = '#fff';
+            }
+            });
+        });
     </script>
 
 </body>
