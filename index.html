@@ -12,8 +12,8 @@
             line-height: 1.5;
             margin: 0;
             padding: 0;
-            background-color: #0E0E0E;
-            color: #D2D2D2;
+            background-color: #09090B;
+            color: #FAFAFA;
             font-size: 0.92rem;
             scrollbar-width: thin; /* Thin scrollbar width */
             scrollbar-color: #4CAF50 #191919; /* Thumb and track colors */
@@ -51,24 +51,24 @@
             flex: 3;
             padding-left: 20px;
             position: relative;
-            background-color: #262525;
+            background-color: #09090B;
             border-top-right-radius: 15px; /* Only top-right corner */
             border-bottom-right-radius: 15px; /* Only bottom-right corner */
-            border: 1px solid #333333;
+            border: 1px solid #27272A;
         }
 
         .profile {
             flex: 1;
             min-width: 200px;
-            background-color: #191919;
+            background-color: #09090B;
             padding: 20px;
             border-top-left-radius: 15px; /* Only top-left corner */
             border-bottom-left-radius: 15px; /* Only bottom-left corner */
-            border: 1px solid #333333;
+            border: 1px solid #27272A;
             display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
         
         .profile img {
@@ -81,7 +81,7 @@
         .profile .icons a {
             margin-right: 10px;
             text-decoration: none;
-            color: #D2D2D2;
+            color: white;
         }
         
         .profile .icons a i {
@@ -89,8 +89,8 @@
         }
 
         .skill {
-            background-color: #262626;
-            color: #ffffff;
+            background-color: #27272A;
+            color: white;
             padding: 3px 8px;
             font-size: 75%;
             border-radius: 10px;
@@ -99,8 +99,8 @@
         }
 
         .position-title {
-            background-color: #262626;
-            color: #ffffff;
+            background-color: #27272A;
+            color: white;
             padding: 3px 8px;
             font-size: 100%;
             border-radius: 10px;
@@ -124,7 +124,7 @@
         }
 
         .tab-buttons button {
-            background-color: #262626;
+            background-color: #27272A;
             color: #D2D2D2;
             border: none;
             padding: 10px 20px;
@@ -133,7 +133,8 @@
         }
 
         .tab-buttons button.active {
-            background-color: #4CAF50;
+            background-color: white;
+            color: #09090B;
         }
 
         /* Content sections */
@@ -230,7 +231,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background-color: #4CAF50; /* Color of the timeline */
+            background-color: white; /* Color of the timeline */
         }
 
         /* Add a circle for the icon marker */
@@ -241,21 +242,21 @@
             top: calc(%-5px); /* Center the circle vertically along the line */
             width: 10px;
             height: 10px;
-            background-color: #4CAF50;
+            background-color: white;
             border-radius: 50%;
         }
 
         /* Add specific spacing for icons next to h3 (if you have icons) */
         h3 i {
             margin-right: 5px; /* Spacing between icon and text */
-            color: #4CAF50;
+            color: white;
             vertical-align: middle;
         }
 
         /* Optional styling for icons in h2 (larger) */
         h2 i {
             margin-right: 10px;
-            color: #4CAF50;
+            color: white;
             vertical-align: middle;
         }
 
@@ -301,8 +302,15 @@
             margin-right: 1px;
         }
 
+        .certificate {
+            filter: grayscale(0.8);
+        }
+
         .certificate:hover {
             cursor: pointer;
+            scale: 1.05;
+            filter: grayscale(0);
+            transition: 0.5s;
         }
 
         .contact {
@@ -340,7 +348,7 @@
 
         /* Input and Textarea Styles */
         .form-input {
-            background-color: #333333;
+            background-color: #09090B;
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #364236;
@@ -355,14 +363,19 @@
         .form-btn {
         gap: 0.5rem;
         padding: 0.75rem 1.5rem;
-        background-color: #4CAF50;
+        background-color: white;
         border: none;
         border-radius: 4px;
-        color: #fff;
+        color: #09090B;
         font-size: 16px;
+        font-weight: bold;
         cursor: pointer;
         transition: background-color 0.3s ease;
         width: 15rem;
+        }
+        .form-btn:hover {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 1); 
+        transition: 0.3s;
         }
         
         /* Mapbox */
@@ -389,6 +402,7 @@
         border-radius: 14px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         z-index: 1;
+        cursor: pointer;
         }
 
         .service-item::before {
@@ -399,7 +413,7 @@
             to bottom right,
             hsla(240, 1%, 18%, 0.251) 0%,
             hsla(240, 2%, 11%, 0) 100%
-        ), hsl(240, 2%, 13%);
+        ), hsl(240, 2%, 13%, 0.5);
         border-radius: inherit;
         z-index: -1;
         }
@@ -407,7 +421,8 @@
         .service-icon-box {
         margin-right: 15px;
         font-size: 40px; /* Adjust icon size */
-        color: hsl(45, 100%, 72%); /* Icon color */
+        color: white; /* Icon color */
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Faint white glow effect */
         }
 
         .service-content-box {
@@ -565,7 +580,7 @@
                     <ul>
                     </ul>
 
-                    <p class="date">2019-2019 <i>(4 months)</i></p>
+                    <p class="date">2019-2019 <i>(6 months)</i></p>
                     <h3 style="margin: 0;">
                         <i class="fas fa-chart-line"></i> Data Analyst at Geomatic
                     </h3>
@@ -679,7 +694,7 @@
                     <figure>
                       <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d330422.615574058!2d-7.655320509668467!3d33.58988602617352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7671c4f8ff93b%3A0x71d3e878e7e1f1c8!2sCasablanca%2C%20Morocco!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-                        width="97%" height="200" loading="lazy"></iframe>
+                        width="97%" height="200"></iframe>
                     </figure>
                   </section>
 
