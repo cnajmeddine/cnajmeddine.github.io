@@ -57,6 +57,19 @@
             border: 1px solid #27272A;
         }
 
+        /* Profile & Personal Info*/
+        .avatar-img {
+            filter: contrast(1.1) grayscale(0.2);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .personal-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
         .profile {
             flex: 1;
             min-width: 200px;
@@ -67,8 +80,8 @@
             border: 1px solid #27272A;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
+            align-items: left;
+            text-align: left;
         }
         
         .profile img {
@@ -85,7 +98,8 @@
         }
         
         .profile .icons a i {
-            font-size: 1.5em;
+            font-size: 2rem;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);;
         }
 
         .skill {
@@ -214,7 +228,7 @@
         .date {
             font-size: 0.9em;
             margin-bottom: 5px;
-            color: #4CAF50;
+            color: #cac9ff;
         }
 
         .experience-education-item {
@@ -446,6 +460,88 @@
             font-weight: 600;
         }
 
+        /* Skills bar */
+        .skillbar-container{
+        width: 280px;
+            
+        }
+        @keyframes load{
+        from {
+            width: 0%
+        }
+        }
+        @-webkit-keyframes load{
+        from {
+            width: 0%
+        }
+        }
+        @-moz-keyframes load{
+        from {
+            width: 0%
+        }
+        }
+        @-o-keyframes load{
+        from {
+            width: 0%
+        }
+        }
+
+        .skillbar{
+            background-color: #191919;
+            padding: 2px;
+            border-radius: 15px;
+            margin-bottom: 5px;
+            font-size: 75%;
+            color: #09090B;
+            font-weight: bold;
+            
+        &::before{
+            content:  attr(data-skill); 
+            display: inline-block;
+            padding: 5px 0 5px 10px;
+            border-radius: inherit;
+            animation: load 2s 0s;
+            -webkit-animation: load 2s 0s;
+            -moz-animation: load 2s 0s;
+            -o-animation: load 2s 0s;
+        } 
+
+        &.learning::before{
+            width: calc(20% - 14px);
+            background: #9ac4e9;
+        }
+        &.basic::before{
+            width: calc(40% - 14px);
+            background: #71A8D9;
+        }
+        &.intermediate::before{
+            width: calc(80% - 14px);
+            color: white;
+            border: 3px solid #ffffff;
+        }
+        &.intermediate2::before{
+            width: calc(80% - 14px);
+            color: #09090B;
+            background-color: white;
+
+        }
+        &.advanced::before{
+            width: calc(88% - 14px);
+            color: #09090B;
+            background-color: white;
+        }
+        &.advanced2::before{
+            width: calc(91% - 14px);
+            color: #09090B;
+            background-color: #d6d6d6;
+        }
+        &.expert::before{
+            width: calc(100% - 14px);
+            background: #081520;
+        }
+        } 
+
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -462,29 +558,53 @@
     <div class="container">
         <!-- Left Profile Section -->
         <div class="profile">
-            <img src="imgs/profile.png" alt="Profile Picture">
-            <h2 style="margin-bottom: 7px;">Najm Eddine Charaf</h2>
-            <p style="margin-top: 0;"><span class="position-title">Data Scientist</span><br>
-              <i>Based in Casablanca, Morocco</i></p>
-
-            <div class="icons">
-                <a href="https://www.linkedin.com/in/najm-eddine-charaf/"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/cnajmeddine"><i class="fab fa-github"></i></a>
-                <a href="mailto:oldcharaf@gmail.com"><i class="fas fa-envelope"></i></a>
+            <img class="avatar-img" src="imgs/profile.png" alt="Profile Picture">
+            <div class="personal-info">
+                <h2 style="margin-bottom: 7px;">Najm Eddine Charaf</h2>
+                <p style="margin-top: 0;"><span class="position-title">Data Scientist</span><br>
+                  <i>Based in Casablanca, Morocco</i></p>
+    
+                <div class="icons">
+                    <a href="https://www.linkedin.com/in/najm-eddine-charaf/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/cnajmeddine"><i class="fab fa-github"></i></a>
+                    <!--<a href="mailto:oldcharaf@gmail.com"><i class="fas fa-envelope"></i></a>-->
+                </div>
             </div>
 
-            <h4>Skills</h4>
+            <div class="skillbar-container">
+                <h4>Skills</h4>
+                <div class="skillbar advanced" data-skill="AI & MLOps"></div>
+                <div class="skillbar advanced2" data-skill="BI & Data Science"></div>
+                <div class="skillbar intermediate2" data-skill="Big Data"></div>
+                <div class="skillbar advanced2" data-skill="Databases & SQL"></div>
+                <div class="skillbar intermediate2" data-skill="Management & Leadership"></div> 
+                <div class="skillbar advanced2" data-skill="Python"></div> 
+                <div class="skillbar intermediate2" data-skill="Cloud Computing"></div>
+              </div>
+
+            <h4>Technologies</h4>
             <div class="skills">
-                <span class="skill">Artificial Intelligence</span>
-                <span class="skill">Computer Vision</span>
-                <span class="skill">Data Science</span>
-                <span class="skill">Big Data</span>
-                <span class="skill">MLOps</span>
-                <span class="skill">Cloud Computing</span>
-                <span class="skill">Business Intelligence</span>
-                <span class="skill">DevOps</span>
-                <span class="skill">Project Management</span>
-                <span class="skill">Leadership</span>
+                <span class="skill">Python</span>
+                <span class="skill">R</span>
+                <span class="skill">Java</span>
+                <span class="skill">SQL</span>
+                <span class="skill">Spark</span>
+                <span class="skill">Hadoop</span>
+                <span class="skill">Airflow</span>
+                <span class="skill">Talend</span>
+                <span class="skill">CNNs</span>
+                <span class="skill">ANNs</span>
+                <span class="skill">LLMs</span>
+                <span class="skill">GenAI</span>
+                <span class="skill">RAG</span>
+                <span class="skill">AWS</span>
+                <span class="skill">GCP</span>
+                <span class="skill">Docker</span>
+                <span class="skill">Tensorflow</span>
+                <span class="skill">Keras</span>
+                <span class="skill">Scikit-learn</span>
+                <span class="skill">PyTorch</span>
+                <span class="skill">PowerBI</span>
                 
                 <!-- Add more skills as needed -->
             </div>
