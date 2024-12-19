@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/imgs/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/imgs/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/imgs/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/imgs/favicon/site.webmanifest">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            background-color: #09090B;
+            color: #FAFAFA;
+            font-size: 0.92rem;
+            scrollbar-width: thin; /* Thin scrollbar width */
+            scrollbar-color: #4CAF50 #191919; /* Thumb and track colors */
+        }
+
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+        width: 20px;
+        }
+
+        ::-webkit-scrollbar-track {
+        background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+        background-color: #383b3c;
+        border-radius: 20px;
+        border: 6px solid transparent;
+        background-clip: content-box;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+        background-color: #a8bbbf;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .main-content {
+            flex: 3;
+            padding-left: 20px;
+            position: relative;
+            background-color: #09090B;
+            border-top-right-radius: 15px; /* Only top-right corner */
+            border-bottom-right-radius: 15px; /* Only bottom-right corner */
+            border: 1px solid #27272A;
+        }
+
+        /* Profile & Personal Info*/
+        .avatar-img {
+            filter: contrast(1.1) grayscale(0.2);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .personal-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile {
+            flex: 1;
+            min-width: 200px;
+            background-color: #09090B;
+            padding: 20px;
+            border-top-left-radius: 15px; /* Only top-left corner */
+            border-bottom-left-radius: 15px; /* Only bottom-left corner */
+            border: 1px solid #27272A;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            text-align: left;
+        }
+        
+        .profile img {
+            width: 150px;
+            border-radius: 30px;
+            display: block;
+            margin: 0 auto; /* Center the image */
+        }
+        
+        .profile .icons a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .profile .icons a i {
+            font-size: 2rem;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);;
+        }
+
+        .skill {
+            background-color: #27272A;
+            color: white;
+            padding: 3px 8px;
+            font-size: 75%;
+            border-radius: 10px;
+            margin: 5px 2px; /* Increased spacing */
+            display: inline-block; /* Ensure they wrap properly */
+        }
+
+        .position-title {
+            background-color: #27272A;
+            color: white;
+            padding: 3px 8px;
+            font-size: 100%;
+            border-radius: 10px;
+            font-weight: 500;
+            margin-bottom: 7px;
+            display: inline-block; /* Ensure they wrap properly */
+        }
+
+        /* Top-right buttons */
+        .tab-buttons {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        
+        .about-btn {
+            border-bottom-left-radius: 15px;
+        }
+        .project-btn {
+            border-top-right-radius: 15px;
+        }
+
+        .tab-buttons button {
+            background-color: #27272A;
+            color: #D2D2D2;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            
+        }
+
+        .tab-buttons button.active {
+            background-color: white;
+            color: #09090B;
+            box-shadow: 0 1px 5px rgba(255, 255, 255, 0.7);
+        }
+
+        /* Content sections */
+        .section-content {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        /* Target h2 inside both #about and #resume */
+        #about h2, #resume h2 {
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        /* Target the ::after pseudo-element for h2 in both #about and #resume */
+        #about h2::after, #resume h2::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: rgb(68, 68, 68); /* Adjust the color if needed */
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Certifications Grid Layout */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* For rows that have fewer than 3 images */
+        .certifications-grid img:nth-child(4),
+        .certifications-grid img:nth-child(5) {
+            grid-column: span 2; /* Make the last 2 images in one row span 2 columns */
+        }
+
+        .certifications-grid img {
+            width: 100%; /* Make sure the images fit their grid cells */
+            border-radius: 10px;
+        }
+
+        /* Experience and Education styles */
+        .experience-education-item {
+            margin-bottom: 20px;
+        }
+        .experience-education-item h3 {
+            margin-top: 5px;
+        }
+        .experience-education-item ul {
+            padding-left: 20px;
+        }
+
+        .certifications-grid {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping to the next line */
+            justify-content: flex-start; /* Space between the items */
+            margin-top: 50px;
+        }
+
+        .certifications-grid img {
+            width: 150px; /* Set the width you want */
+            height: 150px; /* Set the height you want */
+            object-fit: cover; /* Ensures the images maintain aspect ratio and fill the space */
+            border-radius: 10px;
+            margin-bottom: 10px; /* Adjusts space between rows */
+            margin-left: 30px;
+        }
+
+        .date {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            color: #4CAF50;
+        }
+
+        .experience-education-item {
+            position: relative;
+            padding-left: 40px; /* To make room for the timeline */
+            margin-bottom: 30px; /* Spacing between each item */
+        }
+
+        /* Timeline vertical line */
+        .experience-education-item::before {
+            content: "";
+            position: absolute;
+            left: 20px; /* Align with the icons */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: white; /* Color of the timeline */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Add a circle for the icon marker */
+        .experience-education-item h3::before {
+            content: "";
+            position: absolute;
+            left: 15px; /* Adjust position to be on the line */
+            top: calc(%-5px); /* Center the circle vertically along the line */
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 1);
+            margin-top: 6px;
+        }
+
+        /* Add specific spacing for icons next to h3 (if you have icons) */
+        h3 i {
+            margin-right: 5px; /* Spacing between icon and text */
+            color: white;
+            vertical-align: middle;
+        }
+
+        /* Optional styling for icons in h2 (larger) */
+        h2 i {
+            margin-right: 10px;
+            color: white;
+            vertical-align: middle;
+        }
+
+        /* Projects section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+        .project {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            max-height: 150px;
+        }
+
+        .project-text {
+            overflow: hidden;
+            text-overflow: ellipsis; /* Add "..." for overflowing text */
+            white-space: normal;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3; /* Limit to 3 lines in WebKit-based browsers */
+            line-clamp: 3; /* Standard property */
+            max-height: calc(1.2em * 4); /* Fallback for browsers without line-clamp, assuming 1.2em line-height */
+            line-height: 1.2em; /* Line height for consistent spacing */
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap; /* Wraps skills if they overflow */
+            gap: 5px;
+        }
+
+        .project-skills .skill {
+            background-color: #3e3c3c; /* Light blue background */
+            color: #ffffff; /* Blue text */
+            padding: 3px 8px;
+            font-size: 75%; /* Smaller text */
+            border-radius: 10px;
+            margin-right: 1px;
+        }
+
+        .certificate {
+            filter: grayscale(0.8);
+        }
+
+        .certificate:hover {
+            cursor: pointer;
+            scale: 1.05;
+            filter: grayscale(0);
+            transition: 0.5s;
+        }
+
+        .contact {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            max-height: 150px;
+        }
+
+        /* Container and Title */
+        .contact-form {
+        max-width: 600px;
+        margin-bottom: 10px;
+        padding-right: 15px;
+        }
+
+        /* Input Wrapper */
+        .input-wrapper {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        }
+
+        .input-wrapper .form-input {
+        flex: 1;
+        }
+
+        textarea.form-input {
+        min-height: 100px;
+        resize: vertical;
+        margin-bottom: 5px;
+        }
+
+        /* Input and Textarea Styles */
+        .form-input {
+            background-color: #09090B;
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #364236;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #ffffff;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        /* Button Styles */
+        .form-btn {
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background-color: white;
+        border: none;
+        border-radius: 4px;
+        color: #09090B;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 15rem;
+        }
+        .form-btn:hover {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 1); 
+        transition: 0.3s;
+        }
+        
+        /* Mapbox */
+        .mapbox iframe {
+            border: none;
+            filter: grayscale(1) invert(1);
+        }
+
+        /* Services */
+        .service-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2-column grid */
+        gap: 20px 25px; /* Vertical and horizontal spacing */
+        padding-left: 0;
+        padding-right: 10px;
+        }
+
+        .service-item {
+        position: relative;
+        display: flex;
+        align-items: center; /* Center-align icon and text vertically */
+        background: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
+        padding: 0 20px;
+        border-radius: 14px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        cursor: pointer;
+        }
+
+        .service-item::before {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        background: linear-gradient(
+            to bottom right,
+            hsla(240, 1%, 18%, 0.251) 0%,
+            hsla(240, 2%, 11%, 0) 100%
+        ), hsl(240, 2%, 13%, 0.5);
+        border-radius: inherit;
+        z-index: -1;
+        }
+
+        .service-icon-box {
+        margin-right: 15px;
+        font-size: 40px; /* Adjust icon size */
+        color: white; /* Icon color */
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Faint white glow effect */
+        }
+
+        .service-content-box {
+        text-align: left;
+        }
+
+        .service-item-title {
+        margin-bottom: 7px;
+        font-size: 18px;
+        font-weight: bold;
+        }
+
+        .service-item-text {
+        color: hsl(0, 0%, 84%);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+        }
+
+        .about-btn, .resume-btn, .project-btn {
+            font-weight: 600;
+        }
+
+        /* Skills bar */
+        .skillbar-container{
+        width: 280px;
+            
+        }
+        @keyframes load{
+        from {
+            width: 0%
+        }
+        }
+        @-webkit-keyframes load{
+        from {
+            width: 0%
+        }
+        }
+        @-moz-keyframes load{
+        from {
+            width: 0%
+        }
+        }
+        @-o-keyframes load{
+        from {
+            width: 0%
+        }
+        }
+
+        .skillbar{
+            background-color: #191919;
+            padding: 2px;
+            border-radius: 15px;
+            margin-bottom: 5px;
+            font-size: 75%;
+            color: #09090B;
+            font-weight: bold;
+            
+        &::before{
+            content:  attr(data-skill); 
+            display: inline-block;
+            padding: 5px 0 5px 10px;
+            border-radius: inherit;
+            animation: load 2s 0s;
+            -webkit-animation: load 2s 0s;
+            -moz-animation: load 2s 0s;
+            -o-animation: load 2s 0s;
+        } 
+
+        &.learning::before{
+            width: calc(20% - 14px);
+            background: #9ac4e9;
+        }
+        &.basic::before{
+            width: calc(40% - 14px);
+            background: #71A8D9;
+        }
+        &.intermediate::before{
+            width: calc(70% - 14px);
+            color: #09090B;
+            background-color: white;
+            
+        }
+        &.intermediate2::before{
+            width: calc(80% - 14px);
+            color: #09090B;
+            background-color: white;
+
+        }
+        &.advanced::before{
+            width: calc(88% - 14px);
+            color: #09090B;
+            background-color: white;
+        }
+        &.advanced2::before{
+            width: calc(91% - 14px);
+            color: #09090B;
+            background-color: #d6d6d6;
+        }
+        &.expert::before{
+            width: calc(100% - 14px);
+            background: #081520;
+        }
+        } 
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .certifications-grid {
+                grid-template-columns: 1fr; /* Stack all images in one column on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left Profile Section -->
+        <div class="profile">
+            <img class="avatar-img" src="imgs/profile.png" alt="Profile Picture">
+            <div class="personal-info">
+                <h2 style="margin-bottom: 7px;">Najm Eddine Charaf</h2>
+                <p style="margin-top: 0;"><span class="position-title">Data Engineer</span><br>
+                  <i>Based in Casablanca, Morocco</i></p>
+    
+                <div class="icons">
+                    <a href="https://www.linkedin.com/in/najm-eddine-charaf/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/cnajmeddine"><i class="fab fa-github"></i></a>
+                    <!--<a href="mailto:oldcharaf@gmail.com"><i class="fas fa-envelope"></i></a>-->
+                </div>
+            </div>
+
+            <div class="skillbar-container">
+                <h4>Skills</h4>
+                <div class="skillbar advanced" data-skill="AI & MLOps"></div>
+                <div class="skillbar advanced2" data-skill="BI & Data Science"></div>
+                <div class="skillbar intermediate2" data-skill="Big Data"></div>
+                <div class="skillbar advanced2" data-skill="Databases & SQL"></div>
+                <div class="skillbar intermediate2" data-skill="Management & Leadership"></div> 
+                <div class="skillbar advanced2" data-skill="Problem Solving"></div> 
+                <div class="skillbar intermediate" data-skill="Cloud Computing"></div>
+              </div>
+
+            <h4>Technologies</h4>
+            <div class="skills">
+                <span class="skill">Python</span>
+                <span class="skill">R</span>
+                <span class="skill">Java</span>
+                <span class="skill">SQL</span>
+                <span class="skill">Spark</span>
+                <span class="skill">Hadoop</span>
+                <span class="skill">Airflow</span>
+                <span class="skill">Talend</span>
+                <span class="skill">CNNs</span>
+                <span class="skill">ANNs</span>
+                <span class="skill">LLMs</span>
+                <span class="skill">GenAI</span>
+                <span class="skill">RAG</span>
+                <span class="skill">AWS</span>
+                <span class="skill">GCP</span>
+                <span class="skill">Docker</span>
+                <span class="skill">Tensorflow</span>
+                <span class="skill">Keras</span>
+                <span class="skill">Scikit-learn</span>
+                <span class="skill">PyTorch</span>
+                <span class="skill">PowerBI</span>
+                
+                <!-- Add more skills as needed -->
+            </div>
+        </div>
+
+        <!-- Right Content Section -->
+        <div class="main-content">
+            <div class="tab-buttons">
+                <button class="active about-btn" onclick="showSection('about')">About</button>
+                <button class="resume-btn" onclick="showSection('resume')">Resume</button>
+                <button class="resume-btn" onclick="showSection('projects')">Projects</button>
+                <button class="project-btn" onclick="showSection('contact')">Contact</button>
+            </div>
+
+            <!-- About Section -->
+            <div id="about" class="section-content active">
+                <h1>About Me</h1>
+                <p style="margin-right: 20px;">Experienced Data Engineer with over 2 years of industry expertise, specializing in leveraging data-driven insights to drive business decisions and optimize processes. Skilled in data engineering, machine learning, and advanced programming, with a proven track record of delivering actionable solutions and driving innovation in diverse domains.</p>
+
+                <!-- Areas of expertise -->
+                <h2>What I'm Doing</h2>
+                <div class="service">
+                    <ul class="service-list">
+                      <li class="service-item">
+                        <div class="service-icon-box">
+                          <i class="fas fa-robot"></i> <!-- ML & AI Development icon -->
+                        </div>
+                        <div class="service-content-box">
+                          <h4 class="h4 service-item-title">ML & AI Development</h4>
+                          <p class="service-item-text">
+                            Advanced ML models crafted to solve complex business challenges.
+                          </p>
+                        </div>
+                      </li>
+                      <li class="service-item">
+                        <div class="service-icon-box">
+                          <i class="fas fa-database"></i> <!-- Big Data Engineering icon -->
+                        </div>
+                        <div class="service-content-box">
+                          <h4 class="h4 service-item-title">Big Data Engineering</h4>
+                          <p class="service-item-text">
+                            Scalable data architectures and pipelines to harness insights.
+                          </p>
+                        </div>
+                      </li>
+                      <li class="service-item">
+                        <div class="service-icon-box">
+                          <i class="fas fa-chart-line"></i> <!-- Data Science & Business Intelligence icon -->
+                        </div>
+                        <div class="service-content-box">
+                          <h4 class="h4 service-item-title">Data Science & Business Intelligence</h4>
+                          <p class="service-item-text">
+                            Comprehensive analytics to drive impactful decisions-making.
+                          </p>
+                        </div>
+                      </li>
+                      <li class="service-item">
+                        <div class="service-icon-box">
+                          <i class="fas fa-project-diagram"></i> <!-- Project Management & Leadership icon -->
+                        </div>
+                        <div class="service-content-box">
+                          <h4 class="h4 service-item-title">Project Management & Leadership</h4>
+                          <p class="service-item-text">
+                            Project leadership and cross-functional team management.
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  
+
+                <!-- Certifications Grid Section -->
+                <h2>Certifications</h2>
+                <div class="certifications-grid">
+                    <a target="_blank" href="https://www.coursera.org/account/accomplishments/specialization/AXUXTVYT17GS"><img class="certificate" src="/imgs/GPM.png" alt="Google Project Management" href=""></a>
+                    <a target="_blank" href="https://www.coursera.org/account/accomplishments/specialization/certificate/YPH3X5T9DC6G"><img class="certificate" src="/imgs/GDA.png" alt="Google Data Analytics" href=""></a>
+                    <a target="_blank" href="https://www.credly.com/badges/0de796c4-2c23-480c-a594-fc68f4bbc6cb/linked_in_profile"><img class="certificate" src="/imgs/IBMDS.png" alt="IBM Data Science"></a>
+                    <a target="_blank" href="https://www.hackerrank.com/profile/cnajmeddine"><img class="certificate" src="/imgs/HRPy.png" alt="HackerRank Python 5 Stars" href=""></a>
+                </div>
+            </div>
+
+            <!-- Resume Section -->
+            <div id="resume" class="section-content">
+                <h2>
+                    <i class="fas fa-briefcase"></i> Experience
+                </h2>
+                <div class="experience-education-item">
+                    <p class="date">2022-Present</p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-building"></i> Lead Data Engineer at Geomatic
+                    </h3>
+                    <span>In my capacity as Lead Data Engineer, I spearhead the design and implementation of full-stack data solutions, integrating advanced geoanalytics, building scalable pipelines, and driving business growth through data-driven insights and strategic decision systems.</span>
+                    <ul>
+                    </ul>
+
+                    <p class="date">2019-2019 <i>(6 months)</i></p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-chart-line"></i> Data Analyst at Geomatic
+                    </h3>
+                    <span>Conducted data analysis, created reports and visualizations using Power BI and ArcGIS Dashboards, and ensured data accuracy through validation and cleansing.</span>
+                    <ul>
+                    </ul>
+                    
+                </div>
+
+                <h2>
+                    <i class="fas fa-graduation-cap"></i> Education
+                </h2>
+                <div class="experience-education-item">
+                    <p class="date">2023-2025</p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-university"></i> Master of Science in Artificial Intelligence
+                    </h3>
+                    <span>IU International University of Applied Sciences, <i>Germany</i></span>
+
+                    <p class="date">2023-2025</p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-database"></i> Advanced Data Science Programme
+                    </h3>
+                    <span>ExploreAI Academy, <i>Morocco</i></span>
+
+                    <p class="date">2023-2025</p>
+                    <h3 style="margin: 0;">
+                        <i class="fas fa-calculator"></i> Bachelor's degree in Mathematics and Computer Science
+                    </h3>
+                    <span>University of Hassan 2 Casablanca, <i>Morocco</i></span>
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+             <div id="projects" class="section-content">
+                <div class="project-grid"></div>
+                    
+                <div class="project">
+                    <h3 style="margin-top: 0; margin-bottom: 5px;">DataProfiler-kit : Open-source Python Library</h3>
+                    <div class="project-skills">
+                        <p class="skill">Python</p>
+                        <p class="skill">Pandas</p>
+                        <p class="skill">PyPi</p>
+                    </div>
+                    <div class="project-text">
+                        A Python library that provides quick and insightful data profiling for pandas DataFrames. It generates detailed reports including missing values analysis, data type information, correlations, outliers, and column statistics in a clear, organized format.                    </div>
+                    <a href="https://pypi.org/project/data-profiler-kit/" target="_blank" style="color: #4CAF50;">View project →</a>
+                </div>
+
+                <div class="project">
+                    <h3 style="margin-top: 0; margin-bottom: 5px;">Real-Time Weather Data Pipeline</h3>
+                    <div class="project-skills">
+                        <p class="skill">Airflow</p>
+                        <p class="skill">Kafka</p>
+                        <p class="skill">Spark</p>
+                        <p class="skill">Postgres</p>
+                        <p class="skill">Python</p>
+                        <p class="skill">Docker</p>
+                    </div>
+                    <div class="project-text">
+                        Developed a data pipeline that streams, processes, and stores real-time weather data for multiple cities using Apache Kafka, Spark, and Airflow, storing results in PostgreSQL for analysis.
+                    </div>
+                    <a href="https://github.com/cnajmeddine/airflow-spark-kafka-weather-pipeline/" target="_blank" style="color: #4CAF50;">View project →</a>
+                </div>
+
+                <div class="project">
+                    <h3 style="margin-top: 0; margin-bottom: 5px;">Real-Time Stock Market Analytics Pipeline</h3>
+                    <div class="project-skills">
+                        <p class="skill">Python</p>
+                        <p class="skill">Kafka</p>
+                        <p class="skill">EC2</p>
+                        <p class="skill">S3</p>
+                        <p class="skill">AWS Glue</p>
+                        <p class="skill">Athena</p>
+                    </div>
+                    <div class="project-text">
+                        Built a real-time stock market analytics pipeline utilizing Kafka for data streaming. Integrated Python along with AWS services such as EC2, Glue, and Athena for deployment, querying, and market analysis.                    </div>
+                    <a href="https://github.com/cnajmeddine/kafka-streaming" target="_blank" style="color: #4CAF50;">View project →</a>
+                </div>
+
+                <div class="project">
+                    <h3 style="margin-top: 0; margin-bottom: 5px;">Sentiment Analysis with MLFlow</h3>
+                    <div class="project-skills">
+                        <p class="skill">Python</p>
+                        <p class="skill">MLFlow</p>
+                        <p class="skill">MLOps</p>
+                        <p class="skill">NLTK</p>
+                        <p class="skill">Scikit-learn</p>
+                        <p class="skill">Pandas</p>
+                        <p class="skill">Kagglehub</p>
+                    </div>
+                    <div class="project-text">
+                        Employed MLflow for Sentiment Analysis on a Twitter Kaggle dataset using SVC, Logistic Regression, and BNB models. Integrated NLTK for text preprocessing and Scikit-learn for modeling, ensuring efficient experiment tracking and model management.
+                    </div>
+                    <a href="https://github.com/cnajmeddine/mlflow-registry/" target="_blank" style="color: #4CAF50;">View project →</a>
+                </div>
+
+                    <div class="project">
+                        <h3 style="margin-top: 0; margin-bottom: 5px;">Advanced Geoanalytical System</h3>
+                        <div class="project-skills">
+                            <p class="skill">Python</p>
+                            <p class="skill">AWS</p>
+                            <p class="skill">ArcGIS</p>
+                            <p class="skill">QGIS</p>
+                            <p class="skill">Docker</p>
+                            <p class="skill">Big Data</p>
+                        </div>
+                        <div class="project-text">
+                            Orchestrated spatiotemporal data ingestion from IoT sensors and mobile SDKs, implementing an advanced geospatial analytical workflow.
+                        </div>
+                        <a href="#" style="color: #4CAF50;">View project →</a>
+                    </div>
+
+                    <div class="project">
+                        <h3 style="margin-top: 0; margin-bottom: 5px;">Automated Parcel Delineation</h3>
+                        <div class="project-skills">
+                            <p class="skill">Python</p>
+                            <p class="skill">PyTorch</p>
+                            <p class="skill">CNNs</p>
+                            <p class="skill">UNet</p>
+                            <p class="skill">ArcGIS</p>
+                        </div>
+                        <div class="project-text">
+                            Utilized computer vision techniques and image segmentation to automate parcel delineation on satellite imagery, enabling more precise cadastral analysis for urban planning and land management.
+                        </div>
+                        <a href="#" style="color: #4CAF50;">View project →</a>
+                    </div>
+
+                    <div class="project">
+                        <h3 style="margin-top: 0; margin-bottom: 5px;">Radar Data Integration</h3>
+                        <div class="project-skills">
+                            <p class="skill">Python</p>
+                            <p class="skill">Flask</p>
+                            <p class="skill">MySQL</p>
+                            <p class="skill">ETLs</p>
+                            <p class="skill">Power BI</p>
+                        </div>
+                        <div class="project-text">
+                            Developed and deployed ETL processes to seamlessly load data from a radar system into a centralized database. Built an analytical system featuring real-time performance visualization of athletes and generating insightful reports.
+                        </div>
+                        <a href="#" style="color: #4CAF50;">View project →</a>
+                    </div>
+
+                    <div class="project">
+                        <h3 style="margin-top: 0; margin-bottom: 5px;">DialoGPT Chatbot</h3>
+                        <div class="project-skills">
+                            <p class="skill">Python</p>
+                            <p class="skill">Flask</p>
+                            <p class="skill">HuggingFace</p>
+                            <p class="skill">BART</p>
+                            <p class="skill">DialoGPT</p>
+                            <p class="skill">GCP</p>
+                        </div>
+                        <div class="project-text">
+                            Developed an AI-driven chat companion with voice integration.
+                        </div>
+                        <a href="#" style="color: #4CAF50;">View project →</a>
+                    </div>
+
+                </div>
+                
+            <!-- Contact section-->
+            <div id="contact" class="section-content">
+                <div class="contact-div"></div>
+                <section class="mapbox" data-mapbox>
+                    <figure>
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d330422.615574058!2d-7.655320509668467!3d33.58988602617352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7671c4f8ff93b%3A0x71d3e878e7e1f1c8!2sCasablanca%2C%20Morocco!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+                        width="97%" height="200"></iframe>
+                    </figure>
+                  </section>
+
+                  <section class="contact-form">
+
+                    <h3 class="h3 form-title">Contact Form</h3>
+          
+                    <form action="mailto:oldcharaf@gmail.com" class="form">
+          
+                      <div class="input-wrapper">
+                        <input type="text" name="fullname" class="form-input" placeholder="Full name" required>
+          
+                        <input type="email" name="email" class="form-input" placeholder="Email address" required>
+                      </div>
+          
+                      <textarea name="message" class="form-input" placeholder="Your Message" required></textarea>
+          
+                      <button class="form-btn" type="submit">
+                        <ion-icon name="paper-plane"></ion-icon>
+                        <span>Send Message</span>
+                      </button>
+          
+                    </form>
+          
+                  </section>
+                </div>
+             </div>
+
+            </div>
+
+             
+
+        </div>
+    </div>
+
+    <script>
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(function(content) {
+                content.classList.remove('active');
+            });
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-buttons button').forEach(function(button) {
+                button.classList.remove('active');
+            });
+            // Show the selected section and add active class to the button
+            document.getElementById(section).classList.add('active');
+            document.querySelector(`button[onclick="showSection('${section}')"]`).classList.add('active');
+        }
+
+        const inputs = document.querySelectorAll('.form-input');
+
+        // Add an event listener to each input
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+            // If there's text in the input, change background to black
+            if (input.value.trim() !== "") {
+                input.style.backgroundColor = '#333333';
+                input.style.color = 'white'; // Adjust text color for readability
+            } else {
+                // Revert to original background color if empty
+                input.style.backgroundColor = '#333333';
+                input.style.color = '#fff';
+            }
+            });
+        });
+    </script>
+
+</body>
+</html>
